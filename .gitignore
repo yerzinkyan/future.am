@@ -1,0 +1,23 @@
+# Գաղտնի ֆայլեր
+.env
+
+# Python ֆայլեր
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Վիրտուալ միջավայր
+venv/
+env/
+
+# IDE պանակներ (VSCode, PyCharm և այլն)
+.vscode/
+.idea/
+
+# Mac/Windows համակարգային ֆայլեր
+.DS_Store
+Thumbs.db
+
+get_and_give_files_to_llm.py
+PROJECT_FULL_CONTEXT.md

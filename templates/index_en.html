@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Payments Systems</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/fps_logo.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/title-animation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scrollspy.js') }}"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="#home">
+                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo" class="logo">
+            </a>
+        </div>
+        <h1 id="siteTitle" class="title-anim"></h1>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#about_us">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Terminals">Terminals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Arcus">Arcus</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Cards">Bank Cards</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Embosser">Personalization</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="#Contact">Contact</a>
+            </li>
+
+            <li class="nav-item lang-switch" id="langSwitch">
+                <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span class="lang-current-code">ENG</span>
+                    <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul class="lang-menu" id="langMenu">
+                    <li><a href="?lang=hy" data-lang="hy">Հայերեն</a></li>
+                    <li><a href="?lang=ru" data-lang="ru">Русский</a></li>
+                    <li><a href="?lang=en" data-lang="en" class="active">English</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="home" id="home">
+        <div class="home-content" id="homeCarousel">
+            <div class="slides-track" id="slidesTrack">
+                <div class="slide">
+                    <div class="context">
+                        <h1 class="bari_galust">
+                            {{ texts.get('Slide_text1', {}).get('content') | safe }}
+                        </h1>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/fps_logo_PNG.png') }}" alt="Future Payments Systems Logo" class="home-image">
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="context">
+                        <h1>{{ texts.get('Slide_text2', {}).get('content') | safe }}</h1>
+                        <p>{{ texts.get('Slide_text2', {}).get('description') | safe }}</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Slide 3" class="home-image">
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="context">
+                        <h1>{{ texts.get('Slide_text3', {}).get('content') | safe }}</h1>
+                        <p>{{ texts.get('Slide_text3', {}).get('description') | safe }}</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Slide 2" class="home-image">
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-arrow" id="prevBtn">&#8592;</button>
+                <div class="carousel-dots" id="dotsContainer"></div>
+                <button class="carousel-arrow" id="nextBtn">&#8594;</button>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="about_us">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="eyebrow">About Us</span>
+                <h2 class="about-heading">«Future Payment System»</h2>
+                <div class="about-paragraph">
+                    {{ texts.get('about_us', {}).get('content') | safe }}
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/cover1.png') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="Terminals">
+        <div class="terminals-content">
+            <div class="terminals-text">
+                <span class="eyebrow">Terminals</span>
+                <div>
+                    <h2 class="about-heading">«Future Payment System»</h2>
+                    <div class="about-paragraph">
+                        {{ texts.get('terminals', {}).get('content') | safe }}
+                    </div>
+                </div>
+                <div class="terminals-marquee-wrap">
+                    <div class="terminals-marquee-track" id="terminalsTrack">
+                        {% for terminal in terminals %}
+                            <div class="terminal-card">{{ terminal.name }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="Arcus">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="eyebrow">Arcus2 System</span>
+                <h2 class="about-heading">Integration Solutions</h2>
+                <div class="about-paragraph">
+                    {{ texts.get('arcus', {}).get('content') | safe }}
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/arcus.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="Cards">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="eyebrow">Bank Cards</span>
+                <h2 class="about-heading">Card Solutions</h2>
+                <div class="about-paragraph">
+                    {{ texts.get('cards', {}).get('content') | safe }}
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/cards.jpg') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="Embosser">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="eyebrow">Personalization</span>
+                <h2 class="about-heading">Bank Personalization Solutions</h2>
+                <div class="about-paragraph">
+                    {{ texts.get('embosser', {}).get('content') | safe }}
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/emboser.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="Contact">
+        <div class="about-content">
+            <div class="about-text">
+                <span class="eyebrow">Contact</span>
+                <h2 class="about-heading">Get in Touch</h2>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        <span class="contact-text">
+                            <span class="contact-label">Address</span>
+                            <span class="contact-value">{{ texts.get('Address', {}).get('content') | safe }}</span>
+                        </span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        <span class="contact-text">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">
+                                <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                            </span>
+                        </span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </span>
+                        <span class="contact-text">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">
+                                <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="map">
+                <iframe
+                    class="map-frame"
+                    src="https://www.google.com/maps?q=Երևան,+Նար-Դոս+ փողոց +2&t=h&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo" class="footer-logo">
+                <h3 class="footer-title">«Future Payment System»</h3>
+                <p class="footer-tagline">
+                    Secure and reliable payment solutions: POS terminals, Arcus2 integration, and bank cards.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" class="page-scroll">Home</a></li>
+                    <li><a href="#about_us" class="page-scroll">About Us</a></li>
+                    <li><a href="#Terminals" class="page-scroll">Terminals</a></li>
+                    <li><a href="#Arcus" class="page-scroll">Arcus</a></li>
+                    <li><a href="#Cards" class="page-scroll">Bank Cards</a></li>
+                    <li><a href="#Embosser" class="page-scroll">Personalization</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Contact</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>{{ texts.get('Address', {}).get('content') | safe }}</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="footer-col">
+                <h4 class="footer-heading">Հետևեք մեզ</h4>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="footerYear"></span> Future Payment System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
+
+    <script>
+        (function () {
+            const wrap = document.getElementById('langSwitch');
+            const toggle = document.getElementById('langToggle');
+            if (!wrap || !toggle) return;
+
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const isOpen = wrap.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen);
+            });
+
+            document.addEventListener('click', function () {
+                wrap.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+
+            wrap.querySelectorAll('.lang-menu a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    wrap.querySelectorAll('.lang-menu a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                    toggle.querySelector('.lang-current-code').textContent = link.dataset.lang.toUpperCase();
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
