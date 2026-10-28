@@ -21,3 +21,6 @@ Thumbs.db
 
 get_and_give_files_to_llm.py
 PROJECT_FULL_CONTEXT.md
+
+*.dump
+backups/

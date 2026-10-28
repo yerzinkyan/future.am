@@ -1,20 +1,22 @@
-# Python ֆայլեր
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Վիրտուալ միջավայր
 venv/
 env/
+.venv/
 
-# Գաղտնի ֆայլեր (որպեսզի .env-ի պարունակությունը չհայտնվի Docker image-ի մեջ)
+# Секреты не должны попасть в образ
 .env
+.env.*
 
-# Git և Docker ֆայլեր
 .git/
 Dockerfile
-docker-compose.yml
+docker-compose*.yml
 
+# Не нужно в образе
+*.dump
+backups/
+*.md
 get_and_give_files_to_llm.py
-PROJECT_FULL_CONTEXT.md

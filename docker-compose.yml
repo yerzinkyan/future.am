@@ -1,7 +1,8 @@
 services:
   web:
     build: .
-    restart: unless-stopped # Ավտոմատ միանում է սերվերի ռեստարտից հետո
+    restart: unless-stopped
+    
     ports:
       - "7070:7070"
     environment:
@@ -12,6 +13,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    logging: &logging
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
 
   db:
     image: postgres:15-alpine
@@ -27,6 +33,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    logging: *logging
 
 volumes:
   postgres_data:
