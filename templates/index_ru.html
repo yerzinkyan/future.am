@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0c">
     <title>Future Payments Systems</title>
     <link rel="icon" href="{{ url_for('static', filename='images/fps_logo.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/title-animation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scrollspy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </head>
+
 <body>
     <div class="header">
         <div class="logo-container">
             <a href="#home">
-                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo" class="logo">
+                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo"
+                    class="logo">
             </a>
         </div>
         <h1 id="siteTitle" class="title-anim"></h1>
-        <ul class="nav-list">
+        <button class="nav-burger" id="navBurger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navList">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-list" id="navList">
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#home">Главная</a>
             </li>
@@ -43,13 +51,17 @@
 
             <li class="nav-item lang-switch" id="langSwitch">
                 <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
                     </svg>
                     <span class="lang-current-code">РУС</span>
-                    <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
@@ -68,34 +80,37 @@
                 <div class="slide">
                     <div class="context">
                         <h1 class="bari_galust">
-                            {{ texts.get('Slide_text1', {}).get('content') | safe }}
+                            Добро пожаловать в <br> Future Payments Systems
                         </h1>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/FPS.png') }}" alt="Future Payments Systems Logo" class="home-image">
-                    </div>
-                </div>
-                
-                <div class="slide">
-                    <div class="context">
-                        <h1>{{ texts.get('Slide_text2', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text2', {}).get('description') | safe }}</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Slide 3" class="home-image">
+                        <img src="{{ url_for('static', filename='images/FPS.png') }}" alt="Future Payments Systems Logo"
+                            class="home-image">
                     </div>
                 </div>
 
                 <div class="slide">
                     <div class="context">
-                        <h1>{{ texts.get('Slide_text3', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text3', {}).get('description') | safe }}</p>
+                        <h1><strong>Быстро и удобно</strong></h1>
+                        <p>Мы предоставляем современные платежные решения, обеспечивающие безопасные и комфортные
+                            онлайн-платежи.</p>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Slide 2" class="home-image">
+                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Быстрые и удобные платежи" class="home-image">
                     </div>
                 </div>
-                
+
+                <div class="slide">
+                    <div class="context">
+                        <h1><strong>Безопасные транзакции</strong></h1>
+                        <p>Каждый платеж защищен современными технологиями шифрования.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Безопасные транзакции"
+                            class="home-image">
+                    </div>
+                </div>
+
             </div>
 
             <div class="carousel-nav">
@@ -111,12 +126,26 @@
                 <span class="eyebrow">О нас</span>
                 <h2 class="about-heading">«Future Payment System»</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('about_us', {}).get('content') | safe }}
+                    Общество с ограниченной ответственностью «Future Payment System» было основано в 2009 году.<br><br>
+
+                    На протяжении более 15 лет мы представляем в Армении известную французскую компанию
+                    <strong>Ingenico</strong>. Мы не только импортируем, продаем и обслуживаем терминалы Ingenico, но и
+                    внедряем передовые решения для выполнения различных актуальных задач в этой сфере. Компания Ingenico
+                    успешно внедрила решения для онлайн-фискализации (кассовые аппараты и POS-терминалы) в более чем 30
+                    странах мира.<br><br>
+
+                    Мы первыми в Армении внедрили возможность приема бесконтактных (contactless) платежей международных
+                    платежных систем <strong>VISA, MasterCard, AMEX</strong> через POS-терминалы, а также возможность
+                    обслуживания чиповых карт систем <strong>JCB, CUP, AMEX и МИР</strong>.<br><br>
+
+                    Мы являемся абсолютным лидером в сфере POS-терминальных решений в Армении: с нами сотрудничают
+                    практически все банки страны.
                 </div>
             </div>
 
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/cover1.png') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/cover1.png') }}"
+                    alt="Future Payments Systems — безопасная платёжная карта" class="cover-image">
             </div>
         </div>
     </div>
@@ -128,14 +157,56 @@
                 <div>
                     <h2 class="about-heading">«Future Payment System»</h2>
                     <div class="about-paragraph">
-                        {{ texts.get('terminals', {}).get('content') | safe }}
+                        <strong>Портативные устройства</strong><br>
+                        Независимо от того, находитесь ли вы в помещении или на улице, наша линейка портативных
+                        устройств позволяет создать идеальные условия для покупок вдали от основной кассы. Легкие и
+                        удобные в транспортировке благодаря продуманному дизайну, они предлагают полный спектр
+                        возможностей беспроводного подключения, обеспечивая бесперебойную работу вашего бизнеса, где бы
+                        вы ни находились. Созданные для приема любых способов оплаты, они предоставляют все необходимое
+                        для организации безопасной, умной и мобильной точки продаж (POS).<br><br>
+
+                        <strong>Настольные терминалы (Countertop)</strong><br>
+                        Принимайте любые виды платежей и повышайте качество обслуживания клиентов с помощью нашего
+                        широкого ассортимента настольных терминалов. Какими бы ни были ваши потребности, вы обязательно
+                        найдете терминал, идеально подходящий для вашей кассовой зоны. Благодаря компактным размерам
+                        наши настольные модели легко размещаются на любом прилавке, а система MagicBox максимально
+                        упрощает процесс подключения. Поддерживаются все способы оплаты, включая мгновенные платежи, а
+                        широкий выбор каналов связи (включая Ethernet, Wi-Fi и 4G) гарантирует максимальную доступность
+                        и стабильность сети.<br><br>
+
+                        <strong>Системы самообслуживания</strong><br>
+                        Независимо от сферы вашей деятельности — вендинг, розничная торговля, гостиничный бизнес,
+                        зарядные станции для электромобилей, АЗС, транспорт или парковки — наши специализированные
+                        терминалы разработаны для управления любыми сценариями оплаты без участия персонала. Компактный
+                        размер и эргономичный дизайн делают их интеграцию максимально удобной. Вы можете установить их в
+                        качестве модернизации наших предыдущих конфигураций или для замены устаревших решений
+                        конкурентов. Легко расширяйте возможности модулей прямо на месте установки с помощью
+                        дополнительных блоков (add-on boxes), чтобы воспользоваться такими функциями, как беспроводная
+                        связь (4G) или протоколы для вендинга (MDB, EXE и др.).
                     </div>
                 </div>
                 <div class="terminals-marquee-wrap">
                     <div class="terminals-marquee-track" id="terminalsTrack">
-                        {% for terminal in terminals %}
-                            <div class="terminal-card">{{ terminal.name }}</div>
-                        {% endfor %}
+                        <div class="terminal-card">Desk2600</div>
+                        <div class="terminal-card">Desk1600</div>
+                        <div class="terminal-card">Desk3500</div>
+                        <div class="terminal-card">DX4000</div>
+                        <div class="terminal-card">DX8000</div>
+                        <div class="terminal-card">iCT220</div>
+                        <div class="terminal-card">iCT250</div>
+                        <div class="terminal-card">iWL220</div>
+                        <div class="terminal-card">iWL251</div>
+                        <div class="terminal-card">iWL255</div>
+                        <div class="terminal-card">iWL258</div>
+                        <div class="terminal-card">Lane3000</div>
+                        <div class="terminal-card">Lane3600</div>
+                        <div class="terminal-card">Move2500</div>
+                        <div class="terminal-card">Move2600</div>
+                        <div class="terminal-card">Move3500</div>
+                        <div class="terminal-card">Move5000</div>
+                        <div class="terminal-card">Open2500</div>
+                        <div class="terminal-card">Self5000</div>
+                        <div class="terminal-card">SX7000</div>
                     </div>
                 </div>
             </div>
@@ -148,11 +219,31 @@
                 <span class="eyebrow">Система Arcus2</span>
                 <h2 class="about-heading">Интеграционные решения</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('arcus', {}).get('content') | safe }}
+                    Система ARCUS2 — это комплекс программных инструментов, позволяющий принимать безналичные платежи по
+                    банковским картам непосредственно через кассу.<br><br>
+
+                    Система ARCUS2 служит связующим звеном между кассовым программным обеспечением и POS-терминалом.
+                    Широкие возможности настройки системы обеспечивают высокую гибкость для удовлетворения различных
+                    требований и функциональных задач.<br><br>
+
+                    <strong>Внедрение системы позволяет:</strong>
+                    <ul>
+                        <li><strong>Обеспечить легкую взаимозаменяемость кассиров</strong>, исключая необходимость
+                            дополнительного обучения со стороны Банка по использованию POS-терминала.</li>
+                        <li><strong>Исключить дублирование ввода данных</strong> (сумма, тип транзакции), что сводит к
+                            минимуму риск ошибки кассира.</li>
+                        <li><strong>Снизить износ</strong> (амортизацию) POS-терминала.</li>
+                        <li><strong>Сократить расходы на бумагу</strong> за счет использования внешнего принтера
+                            кассовой системы (CMS).</li>
+                        <li><strong>Обеспечить высокую скорость</strong> проведения безналичных транзакций.</li>
+                        <li><strong>Сохранять чеки терминала</strong>, а также просматривать и сравнивать результаты.
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/arcus.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/arcus.jfif') }}"
+                    alt="Future Payments Systems — безопасная платёжная карта" class="cover-image">
             </div>
         </div>
     </div>
@@ -162,11 +253,14 @@
                 <span class="eyebrow">Банковские карты</span>
                 <h2 class="about-heading">Карточные решения</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('cards', {}).get('content') | safe }}
+                    Более 10 лет наша компания поставляет армянским банкам карты международных и локальных платежных
+                    систем. Мы предлагаем карты VISA, Mastercard, ArCa, AMEX и другие, оснащенные магнитной полосой, а
+                    также контактными и бесконтактными (contactless) интерфейсами.
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/cards.jpg') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/cards.jpg') }}"
+                    alt="Future Payments Systems — безопасная платёжная карта" class="cover-image">
             </div>
         </div>
     </div>
@@ -176,11 +270,35 @@
                 <span class="eyebrow">Персонализация</span>
                 <h2 class="about-heading">Решения по персонализации банка</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('embosser', {}).get('content') | safe }}
+                    Система используется в работе центра персонализации и филиалов Банка и предназначена для подготовки
+                    данных персонализации, управления процессом персонализации, хранения, обработки и мониторинга данных
+                    учета карт и документов, а также создания сопроводительной и отчетной документации.<br><br>
+
+                    <strong>Система состоит из следующих подсистем:</strong>
+                    <ul>
+                        <li><strong>Подготовка данных для персонализации</strong> (формирование данных магнитной полосы
+                            и EMV-данных),</li>
+                        <li><strong>Управление персонализацией</strong> карт и ПИН-конвертов,</li>
+                        <li><strong>Документооборот</strong> — формирование учетной и сопроводительной документации,
+                        </li>
+                        <li><strong>Мониторинг</strong> — контроль перемещения карт и документов (включая ПИН-конверты).
+                        </li>
+                    </ul>
+
+                    Система предназначена для использования с различными бэк-офисными (back-office) системами, а также
+                    совместно с решениями по подготовке данных и персонализации различных компаний (OpenWay, Compass
+                    Plus, BPC, Tieto Enator, TSYS, IFS и др.). Пользователи и администраторы могут работать с системой
+                    через WEB-интерфейс. Система имеет гибкие механизмы настройки под требования, форматы и
+                    документооборот конкретного банка.<br><br>
+
+                    <em>Примечание: В соответствии с требованиями стандарта <strong>PCI DSS</strong>, для установки
+                        системы необходимо наличие двух серверов: одного для WEB-сервера, а другого — для базы
+                        данных.</em>
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/emboser.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/emboser.jfif') }}"
+                    alt="Future Payments Systems — безопасная платёжная карта" class="cover-image">
             </div>
         </div>
     </div>
@@ -192,51 +310,57 @@
                 <ul class="contact-list">
                     <li class="contact-item">
                         <span class="contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </span>
                         <span class="contact-text">
                             <span class="contact-label">Адрес</span>
-                            <span class="contact-value">{{ texts.get('Address', {}).get('content') | safe }}</span>
+                            <span class="contact-value">г․Ереван, Нар-Доса 2</span>
                         </span>
                     </li>
                     <li class="contact-item">
                         <span class="contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
                             </svg>
                         </span>
                         <span class="contact-text">
                             <span class="contact-label">Телефон</span>
                             <span class="contact-value">
-                                <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                                <a href="tel:+37411544587">011 54 45 87</a>
                             </span>
                         </span>
                     </li>
                     <li class="contact-item">
                         <span class="contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </span>
                         <span class="contact-text">
                             <span class="contact-label">Эл. почта</span>
                             <span class="contact-value">
-                                <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                                <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                             </span>
                         </span>
                     </li>
                 </ul>
             </div>
             <div class="map">
-                <iframe
-                    class="map-frame"
-                    src="https://www.google.com/maps?q=Երևան,+Նար-Դոս+ փողոց +2&t=h&output=embed"
-                    allowfullscreen=""
-                    loading="lazy"
+                <iframe 
+                    class="map-frame" 
+                    src="https://www.google.com/maps?q=%D4%B5%D6%80%D6%87%D5%A1%D5%B6%2C+%D5%86%D5%A1%D6%80-%D4%B4%D5%B8%D5%BD+%D6%83%D5%B8%D5%B2%D5%B8%D6%81+2&t=h&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -246,7 +370,8 @@
     <footer class="site-footer">
         <div class="footer-top">
             <div class="footer-brand">
-                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo" class="footer-logo">
+                <img src="{{ url_for('static', filename='images/fps_logo.png') }}" alt="Future Payments Systems Logo"
+                    class="footer-logo">
                 <h3 class="footer-title">«Future Payment System»</h3>
                 <p class="footer-tagline">
                     Надёжные и безопасные платёжные решения: POS-терминалы, интеграция Arcus2 и банковские карты.
@@ -269,16 +394,30 @@
                 <h4 class="footer-heading">Контакты</h4>
                 <ul class="footer-contact">
                     <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        <span>{{ texts.get('Address', {}).get('content') | safe }}</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>г․Ереван, Нар-Доса 2</span>
                     </li>
                     <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <a href="tel:+37411544587">011 54 45 87</a>
                     </li>
                     <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                     </li>
                 </ul>
             </div>

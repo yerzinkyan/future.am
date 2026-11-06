@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0c">
     <title>Future Payments Systems</title>
     <link rel="icon" href="{{ url_for('static', filename='images/fps_logo.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/title-animation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scrollspy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </head>
 <body>
     <div class="header">
@@ -18,7 +20,10 @@
             </a>
         </div>
         <h1 id="siteTitle" class="title-anim"></h1>
-        <ul class="nav-list">
+        <button class="nav-burger" id="navBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navList">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-list" id="navList">
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#home">Home</a>
             </li>
@@ -68,7 +73,7 @@
                 <div class="slide">
                     <div class="context">
                         <h1 class="bari_galust">
-                            {{ texts.get('Slide_text1', {}).get('content') | safe }}
+                            Welcome to <br> Future Payments Systems
                         </h1>
                     </div>
                     <div class="image-container">
@@ -78,21 +83,21 @@
                 
                 <div class="slide">
                     <div class="context">
-                        <h1>{{ texts.get('Slide_text2', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text2', {}).get('description') | safe }}</p>
+                        <h1><strong>Fast and Convenient</strong></h1>
+                        <p>We provide modern payment solutions that ensure secure and comfortable online payments.</p>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Slide 3" class="home-image">
+                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Fast and convenient payments" class="home-image">
                     </div>
                 </div>
 
                 <div class="slide">
                     <div class="context">
-                        <h1>{{ texts.get('Slide_text3', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text3', {}).get('description') | safe }}</p>
+                        <h1><strong>Secure Transactions</strong></h1>
+                        <p>Every payment is protected by advanced encryption technologies.</p>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Slide 2" class="home-image">
+                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Secure transactions" class="home-image">
                     </div>
                 </div>
                 
@@ -111,12 +116,15 @@
                 <span class="eyebrow">About Us</span>
                 <h2 class="about-heading">«Future Payment System»</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('about_us', {}).get('content') | safe }}
+                    ” Future Payment System “, a limited liability company founded in 2009. <br><br>
+For more than 15 years, we have been representing the famous French company <strong>Ingenico</strong> in Armenia, not only importing, selling and servicing Ingenico terminals, but also implementing advanced solutions in the field of activity to solve various urgent problems. Ingenico has implemented online fiscalization solutions (cash and POS terminals) in more than 30 countries: <br><br>
+We were the first to introduce in Armenia the possibility of contactless payment acceptance of international payment systems <strong>VISA, MasterCard, AMEX at POS</strong> terminals, as well as the possibility of accepting chip cards of <strong>JCB, CUP, AMEX, MIR</strong> systems: <br><br>
+We are the absolute leader in the field of POS terminal solutions in Armenia: Almost all banks in Armenia cooperate with us:
                 </div>
             </div>
 
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/cover1.png') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/cover1.png') }}" alt="Future Payments Systems — secure payment card" class="cover-image">
             </div>
         </div>
     </div>
@@ -128,14 +136,38 @@
                 <div>
                     <h2 class="about-heading">«Future Payment System»</h2>
                     <div class="about-paragraph">
-                        {{ texts.get('terminals', {}).get('content') | safe }}
+                        <strong>Portable Devices</strong><br>
+Whether you are indoors or outdoors, our Portable range allows you to create a seamless shopping experience that is remote from the checkout. Easy to transport with its nimble design, it offers a full spectrum of wireless connectivity. Keeping you in business, no matter where you are. Designed to handle any payment method, they deliver everything you need to create a secure, smart and mobile point of sale.<br><br>
+
+<strong>Countertop & PIN Pad</strong><br>
+Accept all payment methods and enhance your customers’ user experience, with a comprehensive range of countertop terminals. Whatever you need, you will find a terminal that is tailor-made for your checkout. With their small footprint, our Countertop models can be easily integrated on any counter, while our MagicBox makes connectivity simple. All payment methods are accepted, including instant payment, while a broad variety of communication modes–including Ethernet, WiFi and 4G–maximises your network availability.<br><br>
+
+<strong>Self Service</strong><br>
+Whether you operate in vending, retail, hospitality, EV charging, petrol, transportation or parking, our dedicated terminals are designed to manage every unattended payment scenario. Our terminals compact size and design makes them easy to integrate. You can also install them as an upgrade from one of our previous configurations, or a competitive legacy solution. Upgrade smoothly the modules capabilities directly on the field thanks to optional add-on boxes, to take advantage of extra features like wireless (4G) or vending protocols (MDB, EXE…).
                     </div>
                 </div>
                 <div class="terminals-marquee-wrap">
                     <div class="terminals-marquee-track" id="terminalsTrack">
-                        {% for terminal in terminals %}
-                            <div class="terminal-card">{{ terminal.name }}</div>
-                        {% endfor %}
+                        <div class="terminal-card">Desk2600</div>
+                        <div class="terminal-card">Desk1600</div>
+                        <div class="terminal-card">Desk3500</div>
+                        <div class="terminal-card">DX4000</div>
+                        <div class="terminal-card">DX8000</div>
+                        <div class="terminal-card">iCT220</div>
+                        <div class="terminal-card">iCT250</div>
+                        <div class="terminal-card">iWL220</div>
+                        <div class="terminal-card">iWL251</div>
+                        <div class="terminal-card">iWL255</div>
+                        <div class="terminal-card">iWL258</div>
+                        <div class="terminal-card">Lane3000</div>
+                        <div class="terminal-card">Lane3600</div>
+                        <div class="terminal-card">Move2500</div>
+                        <div class="terminal-card">Move2600</div>
+                        <div class="terminal-card">Move3500</div>
+                        <div class="terminal-card">Move5000</div>
+                        <div class="terminal-card">Open2500</div>
+                        <div class="terminal-card">Self5000</div>
+                        <div class="terminal-card">SX7000</div>
                     </div>
                 </div>
             </div>
@@ -148,11 +180,23 @@
                 <span class="eyebrow">Arcus2 System</span>
                 <h2 class="about-heading">Integration Solutions</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('arcus', {}).get('content') | safe }}
+                    The ARCUS2 system is a combination of software tools, allowing you to make non-cash payments through a bank card directly at the cashier.<br><br>
+
+The ARCUS2 system is a link between the cash register software and the POS terminal. The wide range of possibilities for the system’s settings provides great flexibility to meet various requirements and functionalities.<br><br>
+
+<strong>The introduction of the system allows to:</strong>
+<ul>
+    <li><strong>Ensure cashiers’ interchangeability</strong>, excluding the necessity of additional training by the Bank for using the POS-terminal.</li>
+    <li><strong>Exclude duplicate data entry</strong> (amount, transaction type), which minimizes the risk of cashier’s error.</li>
+    <li><strong>Reduce POS terminal’s depreciation</strong> (wear and tear).</li>
+    <li><strong>Reduce paper costs</strong> by using the CMS external printer.</li>
+    <li><strong>Provide high speed</strong> for non-cash transactions.</li>
+    <li><strong>Save terminal receipts</strong>, as well as view and compare the results.</li>
+</ul>
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/arcus.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/arcus.jfif') }}" alt="Future Payments Systems — secure payment card" class="cover-image">
             </div>
         </div>
     </div>
@@ -162,11 +206,11 @@
                 <span class="eyebrow">Bank Cards</span>
                 <h2 class="about-heading">Card Solutions</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('cards', {}).get('content') | safe }}
+                    For over 10 years, our company has been supplying cards of international and local payment systems to Armenian banks. We offer VISA, Mastercard, ArCa, AMEX, and other types of cards equipped with magnetic stripes, as well as contact and contactless interfaces.
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/cards.jpg') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/cards.jpg') }}" alt="Future Payments Systems — secure payment card" class="cover-image">
             </div>
         </div>
     </div>
@@ -176,11 +220,23 @@
                 <span class="eyebrow">Personalization</span>
                 <h2 class="about-heading">Bank Personalization Solutions</h2>
                 <div class="about-paragraph">
-                    {{ texts.get('embosser', {}).get('content') | safe }}
+                    The system is used in the work of the Bank's personalization center and branches and is designed to prepare personalization data, manage personalization, store, process and monitor data for accounting cards and documents, create accompanying and reporting documentation.<br><br>
+
+<strong>The system consists of the following subsystems:</strong>
+<ul>
+    <li><strong>Data preparation for personalization</strong> (preparation of magnetic stripe data and EMV data),</li>
+    <li><strong>Manage the personalization</strong> of cards and PIN envelopes,</li>
+    <li><strong>Accounting and formation</strong> of accounting and accompanying documentation,</li>
+    <li><strong>Monitoring the movement</strong> of cards and documents, including PIN envelopes.</li>
+</ul>
+
+The system is designed for use with various back offices, as well as in combination with data preparation and personalization systems of various companies (OpenWay, Compass Plus, BPC, Tieto Enator, TSYS, IFS, etc.). Users and administrators can work with the system via the WEB interface. The system has mechanisms for adjusting to the requirements, formats and documents of a particular bank.<br><br>
+
+<em>In accordance with the <strong>PCI DSS</strong> standard, to install the system, you must have two computers: one for a WEB server, the other for a database.</em>
                 </div>
             </div>
             <div class="about-image">
-                <img src="{{ url_for('static', filename='images/emboser.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
+                <img src="{{ url_for('static', filename='images/emboser.jfif') }}" alt="Future Payments Systems — secure payment card" class="cover-image">
             </div>
         </div>
     </div>
@@ -199,7 +255,7 @@
                         </span>
                         <span class="contact-text">
                             <span class="contact-label">Address</span>
-                            <span class="contact-value">{{ texts.get('Address', {}).get('content') | safe }}</span>
+                            <span class="contact-value">Yerevan, Nar-Dos 2</span>
                         </span>
                     </li>
                     <li class="contact-item">
@@ -211,7 +267,7 @@
                         <span class="contact-text">
                             <span class="contact-label">Phone</span>
                             <span class="contact-value">
-                                <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                                <a href="tel:+37411544587">011 54 45 87</a>
                             </span>
                         </span>
                     </li>
@@ -225,7 +281,7 @@
                         <span class="contact-text">
                             <span class="contact-label">Email</span>
                             <span class="contact-value">
-                                <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                                <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                             </span>
                         </span>
                     </li>
@@ -234,7 +290,7 @@
             <div class="map">
                 <iframe
                     class="map-frame"
-                    src="https://www.google.com/maps?q=Երևան,+Նար-Դոս+ փողոց +2&t=h&output=embed"
+                    src="https://www.google.com/maps?q=%D4%B5%D6%80%D6%87%D5%A1%D5%B6%2C+%D5%86%D5%A1%D6%80-%D4%B4%D5%B8%D5%BD+%D6%83%D5%B8%D5%B2%D5%B8%D6%81+2&t=h&output=embed"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
@@ -270,15 +326,15 @@
                 <ul class="footer-contact">
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        <span>{{ texts.get('Address', {}).get('content') | safe }}</span>
+                        <span>Yerevan, Nar-Dos 2</span>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                        <a href="tel:+37411544587">011 54 45 87</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                        <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                     </li>
                 </ul>
             </div>

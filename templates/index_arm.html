@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0c">
     <title>Future Payments Systems</title>
     <link rel="icon" href="{{ url_for('static', filename='images/fps_logo.png') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/title-animation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scrollspy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </head>
 <body>
     <div class="header">
@@ -18,7 +20,10 @@
             </a>
         </div>
         <h1 id="siteTitle" class="title-anim"></h1>
-        <ul class="nav-list">
+        <button class="nav-burger" id="navBurger" type="button" aria-label="Մենյու" aria-expanded="false" aria-controls="navList">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-list" id="navList">
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#home">Գլխավոր</a>
             </li>
@@ -68,7 +73,7 @@
                 <div class="slide">
                     <div class="context">
                         <h1 class="bari_galust">
-                            {{ texts.get('Slide_text1', {}).get('content') | safe }}
+                            Բարի գալուստ <br> Future Payments Systems
                         </h1>
                     </div>
                     <div class="image-container">
@@ -78,21 +83,22 @@
                 
                 <div class="slide">
                     <div class="context">
-                        <h1>{{ texts.get('Slide_text2', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text2', {}).get('description') | safe }}</p>
+                        <h1>Արագ և հարմար</h1>
+                        <p>Մենք տրամադրում ենք ժամանակակից վճարային լուծումներ, որոնք ապահովում են անվտանգ և հարմարավետ առցանց վճարումներ:</p>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Slide 3" class="home-image">
+                        <img src="{{ url_for('static', filename='images/ok.png') }}" alt="Արագ և հարմար վճարումներ" class="home-image">
                     </div>
                 </div>
 
                 <div class="slide">
                     <div class="context">
-                        <h1>{{ texts.get('Slide_text3', {}).get('content') | safe }}</h1>
-                        <p>{{ texts.get('Slide_text3', {}).get('description') | safe }}</p>
+                        <h1><strong>Անվտանգ գործարքներ</strong>
+</h1>
+                        <p>Ամեն վճարում պաշտպանված է ժամանակակից գաղտնագրման տեխնոլոգիաներով:</p>
                     </div>
                     <div class="image-container">
-                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Slide 2" class="home-image">
+                        <img src="{{ url_for('static', filename='images/DX8000.png') }}" alt="Անվտանգ գործարքներ" class="home-image">
                     </div>
                 </div>
                 
@@ -110,9 +116,14 @@
             <div class="about-text">
                 <span class="eyebrow">Մեր մասին</span>
                 <h2 class="about-heading">«Future Payment System»</h2>
-                <p class="about-paragraph">
-                    {{ texts.get('about_us', {}).get('content') | safe }}
-                </p>
+                <div class="about-paragraph">
+                    «Future Payment System» սահմանափակ պատասխանատվությամբ ընկերությունը հիմնադրվել է 2009 թվականին։<br><br>
+Ավելի քան 15 տարի մենք Հայաստանում ներկայացնում ենք ֆրանսիական հայտնի Ingenico ընկերությունը՝ ոչ միայն ներմուծելով, վաճառելով և սպասարկելով <strong>Ingenico</strong> տերմինալներ, այլև տվյալ ոլորտում ներդնելով առաջադեմ լուծումներ՝ զանազան արդիական խնդիրների լուծման նպատակով։ Ingenico-ն առցանց ֆիսկալիզացիայի (դրամարկղային և POS տերմինալներ) լուծումներ է ներդրել ավելի քան 30 երկրներում։<br><br>
+
+Մենք առաջինն էինք, որ Հայաստանում ներդրեցինք POS տերմինալներով <strong>VISA, MasterCard և AMEX</strong> միջազգային վճարային համակարգերի անհպում (contactless) վճարումների ընդունման հնարավորությունը, ինչպես նաև<strong> JCB, CUP, AMEX և MIR</strong> համակարգերի չիպային քարտերի սպասարկումը:<br><br>
+
+Մենք բացարձակ առաջատարն ենք Հայաստանում՝ POS տերմինալային լուծումների ոլորտում։ Մեզ հետ համագործակցում են Հայաստանի գրեթե բոլոր բանկերը։
+                </div>
             </div>
 
             <div class="about-image">
@@ -127,15 +138,39 @@
                 <span class="eyebrow">Տերմինալներ</span>
                 <div>
                     <h2 class="about-heading">«Future Payment System»</h2>
-                    <p class="about-paragraph">
-                        {{ texts.get('terminals', {}).get('content') | safe }}
-                    </p>
+                    <div class="about-paragraph">
+                        <strong>Շարժական սարքեր (Portable Devices)</strong><br>
+Անկախ նրանից՝ գտնվում եք փակ տարածքում, թե բացօթյա միջավայրում, մեր շարժական սարքերի տեսականին թույլ է տալիս հաճախորդների համար ստեղծել գնումների անխափան և հարմարավետ գործընթաց՝ հիմնական դրամարկղից հեռու։ Իրենց թեթև ու ճկուն դիզայնի շնորհիվ այս սարքերը տեղափոխման համար խիստ հարմար են և ապահովում են անլար կապի հնարավորությունների ամբողջական սպեկտր՝ թույլ տալով Ձեզ անխափան շարունակել բիզնես գործունեությունը՝ անկախ գտնվելու վայրից։ Նախագծված լինելով ընդունելու վճարման ցանկացած եղանակ՝ դրանք տրամադրում են այն ամենը, ինչն անհրաժեշտ է անվտանգ, խելացի և մոբայլ վաճառքի կետ (POS) ստեղծելու համար։<br><br>
+
+<strong>Վաճառասեղանի տերմինալներ և PIN-ստեղնաշարեր (Countertop & PIN Pad)</strong><br>
+Ընդունեք վճարման բոլոր եղանակները և բարելավեք ձեր հաճախորդների սպասարկման որակը՝ վաճառասեղանի տերմինալների լայն տեսականու միջոցով: Ինչպիսին էլ լինեն ձեր պահանջները, դուք կգտնեք տերմինալ, որն իդեալականորեն հարմարեցված է ձեր դրամարկղի համար: Իրենց փոքր չափերի շնորհիվ մեր սեղանի մոդելները կարող են հեշտությամբ ինտեգրվել ցանկացած վաճառասեղանի վրա, իսկ մեր MagicBox-ը պարզեցնում է միացման գործընթացը: Ընդունվում են վճարման բոլոր եղանակները, ներառյալ՝ ակնթարթային վճարումները, իսկ կապի միջոցների լայն բազմազանությունը (Ethernet, WiFi և 4G) ապահովում է ցանցի առավելագույն հասանելիություն:<br><br>
+
+<strong>Ինքնասպասարկման սարքեր (Self-Service)</strong><br>
+Անկախ նրանից՝ դուք գործունեություն եք ծավալում վենդինգի, մանրածախ առևտրի, հյուրընկալության, էլեկտրամոբիլների լիցքավորման, բենզալցակայանների, տրանսպորտի, թե կայանատեղիների ոլորտում, մեր մասնագիտացված տերմինալները նախագծված են՝ կառավարելու առանց սպասարկող անձնակազմի վճարային ցանկացած սցենար։ Մեր տերմինալների կոմպակտ չափն ու դիզայնը հեշտացնում են դրանց ինտեգրումը ցանկացած համակարգում։ Դուք կարող եք նաև տեղադրել դրանք որպես արդիականացում (upgrade) մեր նախորդ կոնֆիգուրացիաներից կամ մրցակցային հնացած լուծումներից: Սահուն կերպով ընդլայնեք մոդուլների հնարավորություններն անմիջապես տեղում՝ հավելյալ բլոկների (add-on boxes) շնորհիվ, որպեսզի օգտվեք լրացուցիչ գործառույթներից, ինչպիսիք են անլար կապը (4G) կամ վենդինգային արձանագրությունները (MDB, EXE և այլն):
+                    </div>
                 </div>
                 <div class="terminals-marquee-wrap">
                     <div class="terminals-marquee-track" id="terminalsTrack">
-                        {% for terminal in terminals %}
-                            <div class="terminal-card">{{ terminal.name }}</div>
-                        {% endfor %}
+                        <div class="terminal-card">Desk2600</div>
+                        <div class="terminal-card">Desk1600</div>
+                        <div class="terminal-card">Desk3500</div>
+                        <div class="terminal-card">DX4000</div>
+                        <div class="terminal-card">DX8000</div>
+                        <div class="terminal-card">iCT220</div>
+                        <div class="terminal-card">iCT250</div>
+                        <div class="terminal-card">iWL220</div>
+                        <div class="terminal-card">iWL251</div>
+                        <div class="terminal-card">iWL255</div>
+                        <div class="terminal-card">iWL258</div>
+                        <div class="terminal-card">Lane3000</div>
+                        <div class="terminal-card">Lane3600</div>
+                        <div class="terminal-card">Move2500</div>
+                        <div class="terminal-card">Move2600</div>
+                        <div class="terminal-card">Move3500</div>
+                        <div class="terminal-card">Move5000</div>
+                        <div class="terminal-card">Open2500</div>
+                        <div class="terminal-card">Self5000</div>
+                        <div class="terminal-card">SX7000</div>
                     </div>
                 </div>
             </div>
@@ -147,9 +182,21 @@
             <div class="about-text">
                 <span class="eyebrow">Arcus2 համակարգ</span>
                 <h2 class="about-heading">Ինտեգրացիոն լուծումներ</h2>
-                <p class="about-paragraph">
-                    {{ texts.get('arcus', {}).get('content') | safe }}
-                </p>
+                <div class="about-paragraph">
+                    ARCUS2 համակարգը ծրագրային գործիքների համալիր է, որը թույլ է տալիս ընդունել բանկային քարտերով անկանխիկ վճարումներ անմիջապես դրամարկղի միջոցով:<br><br>
+
+ARCUS2 համակարգը կապող օղակ է հանդիսանում դրամարկղային ծրագրային ապահովման և POS տերմինալի միջև: Համակարգի կարգավորումների լայն հնարավորություններն ապահովում են մեծ ճկունություն՝ տարատեսակ պահանջների և գործառույթների բավարարման տեսանկյունից:<br><br>
+
+<strong>Համակարգի ներդրումը թույլ է տալիս՝</strong>
+<ul>
+    <li><strong>Ապահովել գանձապահների հեշտ փոխարինելիությունը</strong>՝ բացառելով POS տերմինալից օգտվելու համար Բանկի կողմից անցկացվող լրացուցիչ վերապատրաստման անհրաժեշտությունը։</li>
+    <li><strong>Բացառել տվյալների կրկնօրինակումը</strong> (գումար, գործարքի տեսակ)՝ նվազագույնի հասցնելով գանձապահի սխալվելու ռիսկը։</li>
+    <li><strong>Նվազեցնել POS տերմինալի մաշվածությունը</strong> (ամորտիզացիան)։</li>
+    <li><strong>Կրճատել թղթի ծախսերը</strong>՝ օգտագործելով դրամարկղային համակարգի (CMS) արտաքին տպիչը։</li>
+    <li><strong>Ապահովել բարձր արագություն</strong> անկանխիկ գործարքների իրականացման համար։</li>
+    <li><strong>Պահպանել տերմինալի անդորրագրերը</strong>, ինչպես նաև դիտել և համեմատել արդյունքները։</li>
+</ul>
+                </div>
             </div>
             <div class="about-image">
                 <img src="{{ url_for('static', filename='images/arcus.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
@@ -161,9 +208,9 @@
             <div class="about-text">
                 <span class="eyebrow">Բանկային քարտեր</span>
                 <h2 class="about-heading">Քարտային լուծումներ</h2>
-                <p class="about-paragraph">
-                    {{ texts.get('cards', {}).get('content') | safe }}
-                </p>
+                <div class="about-paragraph">
+                    Ավելի քան 10 տարի մեր ընկերությունը հայաստանյան բանկերին մատակարարում է միջազգային և տեղական վճարային համակարգերի քարտեր։ Մենք առաջարկում ենք մագնիսական ժապավենով, ինչպես նաև կոնտակտային և անհպում (contactless) ինտերֆեյսներով հագեցած VISA, Mastercard, ArCa, AMEX և այլ տեսակի քարտեր։
+                </div>
             </div>
             <div class="about-image">
                 <img src="{{ url_for('static', filename='images/cards.jpg') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
@@ -175,9 +222,21 @@
             <div class="about-text">
                 <span class="eyebrow">Բանկային քարտեր</span>
                 <h2 class="about-heading">Բանկի անհատականացման լուծումներ</h2>
-                <p class="about-paragraph">
-                    {{ texts.get('embosser', {}).get('content') | safe }}
-                </p>
+                <div class="about-paragraph">
+                    Համակարգը կիրառվում է Բանկի անհատականացման (personalization) կենտրոնների և մասնաճյուղերի աշխատանքներում։ Այն նախատեսված է անհատականացման տվյալների նախապատրաստման, գործընթացի կառավարման, քարտերի և փաստաթղթերի հաշվառման տվյալների պահպանման, մշակման ու վերահսկման, ինչպես նաև հաշվետվողական ու ուղեկցող փաստաթղթերի ստեղծման համար։<br><br>
+
+<strong>Համակարգը բաղկացած է հետևյալ ենթահամակարգերից՝</strong>
+<ul>
+    <li><strong>Անհատականացման տվյալների նախապատրաստում</strong> (մագնիսական ժապավենի և EMV տվյալների ձևավորում),</li>
+    <li><strong>Անհատականացման կառավարում</strong>՝ քարտերի և PIN-ծրարների համար,</li>
+    <li><strong>Փաստաթղթաշրջանառություն</strong>՝ հաշվառման և ուղեկցող փաստաթղթերի ձևավորում,</li>
+    <li><strong>Մոնիթորինգ</strong>՝ քարտերի և փաստաթղթերի (այդ թվում՝ PIN-ծրարների) շարժի վերահսկում։</li>
+</ul>
+
+Համակարգը նախատեսված է տարբեր բեք-օֆիս (back-office) համակարգերի, ինչպես նաև տարբեր ընկերությունների (OpenWay, Compass Plus, BPC, Tieto Enator, TSYS, IFS և այլն) լուծումների հետ համատեղ կիրառման համար։ Օգտատերերը և ադմինիստրատորները կարող են աշխատել համակարգի հետ WEB-ինտերֆեյսի միջոցով։ Համակարգն ունի ճկուն մեխանիզմներ՝ այն կոնկրետ բանկի պահանջներին, ձևաչափերին և փաստաթղթաշրջանառությանը հարմարեցնելու համար։<br><br>
+
+<em>Նշում. Համաձայն <strong>PCI DSS</strong> ստանդարտի պահանջների՝ տեղադրման համար անհրաժեշտ է ունենալ երկու սերվեր՝ մեկը WEB-սերվերի, իսկ մյուսը՝ տվյալների բազայի համար։</em>
+                </div>
             </div>
             <div class="about-image">
                 <img src="{{ url_for('static', filename='images/emboser.jfif') }}" alt="Future Payments Systems — անվտանգ վճարային քարտ" class="cover-image">
@@ -199,7 +258,7 @@
                         </span>
                         <span class="contact-text">
                             <span class="contact-label">Հասցե</span>
-                            <span class="contact-value">{{ texts.get('Address', {}).get('content') | safe }}</span>
+                            <span class="contact-value">ք. Երևան, Նար-Դոս 2</span>
                         </span>
                     </li>
                     <li class="contact-item">
@@ -211,7 +270,7 @@
                         <span class="contact-text">
                             <span class="contact-label">Հեռախոս</span>
                             <span class="contact-value">
-                                <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                                <a href="tel:+37411544587">011 54 45 87</a>
                             </span>
                         </span>
                     </li>
@@ -225,7 +284,7 @@
                         <span class="contact-text">
                             <span class="contact-label">Էլփոստ</span>
                             <span class="contact-value">
-                                <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                                <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                             </span>
                         </span>
                     </li>
@@ -234,7 +293,7 @@
             <div class="map">
                 <iframe
                     class="map-frame"
-                    src="https://www.google.com/maps?q=Երևան,+Նար-Դոս+ փողոց +2&t=h&output=embed"
+                    src="https://www.google.com/maps?q=%D4%B5%D6%80%D6%87%D5%A1%D5%B6%2C+%D5%86%D5%A1%D6%80-%D4%B4%D5%B8%D5%BD+%D6%83%D5%B8%D5%B2%D5%B8%D6%81+2&t=h&output=embed"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
@@ -254,7 +313,7 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Նավարկություն</h4>
+                <h4 class="footer-heading">Նավիգացիա</h4>
                 <ul class="footer-links">
                     <li><a href="#home" class="page-scroll">Գլխավոր</a></li>
                     <li><a href="#about_us" class="page-scroll">Մեր մասին</a></li>
@@ -270,15 +329,15 @@
                 <ul class="footer-contact">
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        <span>{{ texts.get('Address', {}).get('content') | safe }}</span>
+                        <span>ք. Երևան, Նար-Դոս 2</span>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        <a href="tel:{{ texts.get('Phone', {}).get('content') | safe }}">{{ texts.get('Phone', {}).get('content') | safe }}</a>
+                        <a href="tel:+37411544587">011 54 45 87</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <a href="mailto:{{ texts.get('Email', {}).get('content') | safe }}">{{ texts.get('Email', {}).get('content') | safe }}</a>
+                        <a href="mailto:ingenico@future.am">ingenico@future.am</a>
                     </li>
                 </ul>
             </div>
