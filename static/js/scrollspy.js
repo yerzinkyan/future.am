@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Header height in px — must match the fixed header's actual height
-    const headerOffset = 100;
+    // Header offset in px — single source of truth is --header-h in style.css
+    const headerOffset = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+    ) || 100;
 
     const observer = new IntersectionObserver(
         (entries) => {

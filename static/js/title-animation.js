@@ -22,18 +22,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Չափում ենք fill հատվածների բնական լայնությունը՝ արդեն h1-ի ներսում, ճիշտ font-ով
+    // Լայնությունը պահվում է em-երով, որպեսզի ճիշտ մնա, երբ շրիֆտի չափը փոխվում է (հեռախոս / համակարգիչ)
     function lockNaturalWidths() {
+        const fontSize = parseFloat(getComputedStyle(titleEl).fontSize) || 16;
         fillSpans.forEach(function (span) {
-            const w = span.scrollWidth;
-            span.dataset.naturalWidth = w;
-            span.style.maxWidth = w + 'px';
+            const em = span.scrollWidth / fontSize;
+            span.dataset.naturalEm = em;
+            span.style.maxWidth = em + 'em';
         });
     }
 
-    requestAnimationFrame(function () {
-        lockNaturalWidths();
+    // Սպասում ենք շրիֆտի բեռնմանը, հակառակ դեպքում չափումը սխալ կլինի
+    const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function () {
         requestAnimationFrame(function () {
-            titleEl.classList.add('shown');
+            lockNaturalWidths();
+            requestAnimationFrame(function () {
+                titleEl.classList.add('shown');
+            });
         });
     });
 
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function expandBack() {
         fillSpans.forEach(function (span) {
             span.style.opacity = '1';
-            span.style.maxWidth = span.dataset.naturalWidth + 'px';
+            span.style.maxWidth = span.dataset.naturalEm + 'em';
         });
         titleEl.querySelectorAll('.key').forEach(function (k) {
             k.classList.remove('highlight');
@@ -76,5 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const track = document.getElementById('terminalsTrack');
+    if (!track) return;
     track.innerHTML += track.innerHTML;
 });

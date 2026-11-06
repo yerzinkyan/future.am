@@ -46,8 +46,31 @@ document.addEventListener('DOMContentLoaded', function () {
     prevBtn.addEventListener('click', prev);
     nextBtn.addEventListener('click', next);
 
-    wrapper.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
-    wrapper.addEventListener('mouseleave', startAutoplay);
+    // hover-pause only where a real pointer exists (touch emulates mouseenter and would freeze autoplay)
+    if (window.matchMedia('(hover: hover)').matches) {
+        wrapper.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+        wrapper.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // swipe left / right on touch screens
+    let touchX = null;
+    let touchY = null;
+    wrapper.addEventListener('touchstart', (e) => {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        clearInterval(autoplayTimer);
+    }, { passive: true });
+    wrapper.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        touchX = null;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            dx < 0 ? next() : prev();
+        } else {
+            resetAutoplay();
+        }
+    }, { passive: true });
 
     render();
     startAutoplay();
